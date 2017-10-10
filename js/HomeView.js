@@ -5,22 +5,22 @@ var HomeView = function(store) {
         this.el = $('<div/>');
         this.el.on('keyup', '.search-key', this.findByName);
     };
- 
-    this.initialize();
+
 
 	this.render = function() {
-        this.el.html(HomeView.Template());
+        this.el.html(HomeView.template());
         return this;
-    },
+    };
 
     this.findByName = function() {
         store.findByName($('.search-key').val(), function(employees) {
             $('.employee-list').html(HomeView.liTemplate(employees));
         });
-    }
-
+    };
+    
+    this.initialize();
  
-},
+}
 
 
 
