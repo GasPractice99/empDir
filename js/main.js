@@ -30,6 +30,7 @@ var app = {
         }
     },
 
+
     initialize: function() {
         var self = this;
 
@@ -40,7 +41,6 @@ var app = {
         });
 
     }
-
 
 
 };

@@ -4,6 +4,7 @@ var HomeView = function(store) {
         // Define a div wrapper for the view. The div wrapper is used to attach events.
         this.el = $('<div/>');
         this.el.on('keyup', '.search-key', this.findByName);
+        this.getCopInfo("08");
     };
 
 
@@ -25,6 +26,24 @@ var HomeView = function(store) {
 	    });
 	};
 
+	this.getCopInfo = function(copId) {
+
+		var request = {
+		  "async": true,
+		  "crossDomain": true,
+		  "url": "https://34.213.184.98:8000/cops/info?userId=" + copId,
+		  "method": "GET"
+		};
+
+		$.ajax(request).done(function (response) {
+		  console.log(response.copDetails);
+
+		  $('.cop-stuff').html(HomeView.testJSONTemplate(response.copDetails));
+
+		});
+
+	};
+
     this.initialize();
  
 }
@@ -33,3 +52,4 @@ var HomeView = function(store) {
 
 HomeView.template = Handlebars.compile($("#home-tpl").html());
 HomeView.liTemplate = Handlebars.compile($("#employee-li-tpl").html());
+HomeView.testJSONTemplate = Handlebars.compile($("#test-json-response").html());
