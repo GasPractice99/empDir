@@ -40,6 +40,7 @@ var HomeView = function(store) {
 
 		  $('.cop-stuff').html(HomeView.testJSONTemplate(response.copDetails));
 
+
 		});
 
 	};
