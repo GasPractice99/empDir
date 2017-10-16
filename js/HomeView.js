@@ -36,9 +36,17 @@ var HomeView = function(store) {
 		};
 
 		$.ajax(request).done(function (response) {
-		  console.log(response.copDetails);
+			if(request) {
+				console.log(response.copDetails);
+				$('.cop-stuff').html(HomeView.testJSONTemplate(response.copDetails));
+			} else {
+				console.log("could not fetch Cop Data");
+				var defaultResponse = {copId: "00", displayName: "None Found", phone: "None Found"};
+				$('.cop-stuff').html(HomeView.testJSONTemplate(defaultResponse));
+			}
+		  
 
-		  $('.cop-stuff').html(HomeView.testJSONTemplate(response.copDetails));
+		  
 
 
 		});
